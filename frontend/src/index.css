@@ -1,0 +1,239 @@
+:root {
+  --bg: #0f1420;
+  --panel: #161d2e;
+  --panel-border: #232c42;
+  --text: #e8ecf5;
+  --text-dim: #8f9bb8;
+  --accent: #4f8cff;
+  --danger: #ff5c5c;
+  --warn: #ffb84f;
+  --ok: #4fd18a;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.header h1 {
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+
+.header p {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid var(--panel-border);
+  color: var(--text);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.panel h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  margin: 0 0 14px;
+}
+
+.station-flow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.station-box {
+  flex: 1;
+  min-width: 140px;
+  border-radius: 10px;
+  padding: 14px;
+  border: 2px solid var(--panel-border);
+  background: #10182a;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.station-box.bottleneck {
+  border-color: var(--danger);
+  background: linear-gradient(180deg, rgba(255,92,92,0.15), rgba(255,92,92,0.03));
+  box-shadow: 0 0 0 3px rgba(255,92,92,0.15);
+}
+
+.station-name {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 10px;
+  background: var(--danger);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.util-bar-track {
+  height: 6px;
+  background: #232c42;
+  border-radius: 3px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.util-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.timeline-legend {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 18px;
+}
+
+@media (max-width: 860px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.summary-card {
+  background: #10182a;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.summary-card .value {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.summary-card .label {
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+.whatif-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+select, input[type="number"] {
+  background: #10182a;
+  border: 1px solid var(--panel-border);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.result-box {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 8px;
+  background: rgba(79, 209, 138, 0.08);
+  border: 1px solid rgba(79, 209, 138, 0.35);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.loading, .error {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-dim);
+}
