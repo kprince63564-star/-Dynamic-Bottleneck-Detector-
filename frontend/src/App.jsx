@@ -3,6 +3,7 @@ import StationFlow from "./components/StationFlow.jsx";
 import BottleneckTimeline from "./components/BottleneckTimeline.jsx";
 import SummaryCards from "./components/SummaryCards.jsx";
 import WhatIfPanel from "./components/WhatIfPanel.jsx";
+import { apiUrl } from "./api.js";
 
 const PLAYBACK_MS_PER_STEP = 120; // how fast the replay steps through snapshots
 
@@ -16,11 +17,11 @@ export default function App() {
 
   useEffect(() => {
     Promise.all([
-      fetch("/api/simulation").then((r) => {
+      fetch(apiUrl("/api/simulation")).then((r) => {
         if (!r.ok) throw new Error("Could not reach backend at /api/simulation");
         return r.json();
       }),
-      fetch("/api/summary").then((r) => r.json()),
+      fetch(apiUrl("/api/summary")).then((r) => r.json()),
     ])
       .then(([simData, summaryData]) => {
         setSim(simData);

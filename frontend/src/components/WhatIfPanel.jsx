@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { apiUrl } from "../api.js";
 
 export default function WhatIfPanel({ stations }) {
   const [station, setStation] = useState(stations[0] || "");
@@ -11,7 +12,7 @@ export default function WhatIfPanel({ stations }) {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/whatif", {
+      const res = await fetch(apiUrl("/api/whatif"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ station, extra_capacity: Number(extraCapacity) }),
